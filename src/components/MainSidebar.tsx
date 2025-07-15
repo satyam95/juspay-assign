@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AccordionItem from "./AccordionItem";
 
 const MainSidebar = () => {
@@ -20,22 +21,26 @@ const MainSidebar = () => {
             Recently
           </div>
         </div>
-        <div className="flex items-center gap-1 px-2 py-1">
-          <div className="w-4 h-4 flex justify-center items-center">
-            <div className="bg-[rgba(28,28,28,0.2)] dark:bg-[rgba(255,255,255,0.2)] w-1.5 h-1.5 rounded-full transition-colors duration-200" />
+        <Link to="/">
+          <div className="flex items-center gap-1 px-2 py-1 hover:bg-[rgba(28,28,28,0.05)] dark:hover:bg-[rgba(255,255,255,0.1)] rounded-lg transition-colors duration-200 cursor-pointer">
+            <div className="w-4 h-4 flex justify-center items-center">
+              <div className="bg-[rgba(28,28,28,0.2)] dark:bg-[rgba(255,255,255,0.2)] w-1.5 h-1.5 rounded-full transition-colors duration-200" />
+            </div>
+            <div className="text-sm leading-5 font-normal text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
+              Overview
+            </div>
           </div>
-          <div className="text-sm leading-5 font-normal text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
-            Overview
+        </Link>
+        <Link to="/orders">
+          <div className="flex items-center gap-1 px-2 py-1 hover:bg-[rgba(28,28,28,0.05)] dark:hover:bg-[rgba(255,255,255,0.1)] rounded-lg transition-colors duration-200 cursor-pointer">
+            <div className="w-4 h-4 flex justify-center items-center">
+              <div className="bg-[rgba(28,28,28,0.2)] dark:bg-[rgba(255,255,255,0.2)] w-1.5 h-1.5 rounded-full transition-colors duration-200" />
+            </div>
+            <div className="text-sm leading-5 font-normal text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
+              Orders
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-1 px-2 py-1">
-          <div className="w-4 h-4 flex justify-center items-center">
-            <div className="bg-[rgba(28,28,28,0.2)] dark:bg-[rgba(255,255,255,0.2)] w-1.5 h-1.5 rounded-full transition-colors duration-200" />
-          </div>
-          <div className="text-sm leading-5 font-normal text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
-            Projects
-          </div>
-        </div>
+        </Link>
       </div>
       <div className="flex flex-col gap-1 pb-3">
         <div className="text-[rgba(28,28,28,0.4)] dark:text-[rgba(255,255,255,0.4)] text-sm leading-5 font-normal px-2 py-1 transition-colors duration-200">
