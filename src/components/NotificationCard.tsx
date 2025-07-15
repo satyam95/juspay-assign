@@ -13,7 +13,7 @@ const NotificationCard = ({
   time,
 }: NotificationCardProps) => {
   return (
-    <div className="flex flex-row gap-2 p-1">
+    <div className="flex flex-row gap-2 p-1 hover:bg-[rgba(28,28,28,0.05)] dark:hover:bg-[rgba(255,255,255,0.1)] rounded-sm cursor-pointer">
       <div
         className={`min-w-6 h-6 rounded-lg flex items-center justify-center ${
           type == "bug"

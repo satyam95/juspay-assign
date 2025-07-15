@@ -70,7 +70,6 @@ const CustomPieChart = () => {
             paddingAngle={5}
             cornerRadius={7}
             dataKey="value"
-            isAnimationActive={false}
           >
             {data.map((entry, index) => (
               <Cell

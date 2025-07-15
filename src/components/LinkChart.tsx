@@ -3,18 +3,31 @@ import {
   Line,
   LineChart,
   ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { useTheme } from "../contexts/ThemeContextUtils";
+import type {
+  NameType,
+  ValueType,
+  Payload,
+} from "recharts/types/component/DefaultTooltipContent";
+
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<Payload<ValueType, NameType>>;
+  coordinate?: { x: number; y: number };
+  theme: string;
+}
 
 const data = [
-  { name: "Jan", blue: 7, blackSolid: 13, blackDashed: null },
-  { name: "Feb", blue: 19, blackSolid: 6, blackDashed: null },
-  { name: "Mar", blue: 15, blackSolid: 10, blackDashed: null },
-  { name: "Apr", blue: 12, blackSolid: 19, blackDashed: 19 },
-  { name: "May", blue: 14, blackSolid: null, blackDashed: 22 },
-  { name: "Jun", blue: 25, blackSolid: null, blackDashed: 21 },
+  { name: "Jan", PW: 7, CW: 13, CWD: null },
+  { name: "Feb", PW: 19, CW: 6, CWD: null },
+  { name: "Mar", PW: 15, CW: 10, CWD: null },
+  { name: "Apr", PW: 12, CW: 19, CWD: 19 },
+  { name: "May", PW: 14, CW: null, CWD: 22 },
+  { name: "Jun", PW: 25, CW: null, CWD: 21 },
 ];
 
 export const CustomXTick = ({
@@ -67,6 +80,44 @@ export const CustomYTick = ({
   </text>
 );
 
+export const CustomSectorTooltip = ({
+  active,
+  payload,
+  coordinate,
+  theme,
+}: CustomTooltipProps) => {
+  if (active && payload && payload.length && coordinate) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: coordinate.x + 25,
+          top: coordinate.y,
+          transform: "translate(-50%, -50%)",
+          pointerEvents: "none",
+          zIndex: 10,
+          backdropFilter: "blur(40px)",
+          backgroundColor: `${
+            theme === "dark" ? "rgba(255,255,255,0.05)" : "rgba(28,28,28,0.8)"
+          }`,
+        }}
+        className="py-1 px-1.5 rounded-lg w-19"
+      >
+        <div className="text-[rgba(255,255,255,1)] text-xs leading-[18px] font-normal">
+          {payload[0].payload.name}
+        </div>
+        <div className="text-[rgba(255,255,255,1)] text-xs leading-[18px] font-normal">
+          {payload[0].name}: {payload[0].value}M
+        </div>
+        <div className="text-[rgba(255,255,255,1)] text-xs leading-[18px] font-normal">
+          {payload[1].name}: {payload[1].value}M
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
+
 const LinkChart = () => {
   const { theme } = useTheme();
   return (
@@ -82,6 +133,12 @@ const LinkChart = () => {
                 : "rgba(28, 28, 28, 0.05)"
             }
             strokeWidth={1}
+          />
+          <Tooltip
+            cursor={false}
+            content={(props) => (
+              <CustomSectorTooltip {...props} theme={theme} />
+            )}
           />
           <XAxis
             dataKey="name"
@@ -104,35 +161,31 @@ const LinkChart = () => {
 
           <Line
             type="monotone"
-            dataKey="blue"
+            dataKey="PW"
             stroke="rgba(168,197,218,1)"
             strokeWidth={3}
-            dot={false}
-            activeDot={false}
-            isAnimationActive={false}
           />
 
           <Line
             type="monotone"
-            dataKey="blackSolid"
-            stroke="rgba(28, 28, 28, 1)"
+            dataKey="CW"
+            stroke="rgba(28,28,28,1)"
             strokeWidth={3}
-            dot={false}
-            activeDot={false}
-            connectNulls
-            isAnimationActive={false}
           />
 
           <Line
             type="monotone"
-            dataKey="blackDashed"
-            stroke="rgba(28, 28, 28, 1)"
+            dataKey="CWD"
+            stroke="rgba(28,28,28,1)"
             strokeDasharray="6 6"
             strokeWidth={3}
-            dot={false}
-            activeDot={false}
+            dot={{
+              r: 5,
+              fill: "rgba(28,28,28,1)",
+              stroke: "rgba(28,28,28,1)",
+              strokeWidth: 0,
+            }}
             connectNulls
-            isAnimationActive={false}
           />
         </LineChart>
       </ResponsiveContainer>

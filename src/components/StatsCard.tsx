@@ -47,7 +47,7 @@ const StatsCard = ({
 
   return (
     <div
-      className="rounded-2xl p-6"
+      className="rounded-2xl p-6 transform transition-transform duration-200 hover:scale-105"
       style={{
         backgroundColor:
           backgroundColors[color][theme === "dark" ? "dark" : "light"],

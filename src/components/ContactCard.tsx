@@ -5,7 +5,7 @@ interface ContactCardProps {
 
 const ContactCard = ({ picture, name }: ContactCardProps) => {
   return (
-    <div className="flex items-center gap-2 p-1">
+    <div className="flex items-center gap-2 p-1 hover:bg-[rgba(28,28,28,0.05)] dark:hover:bg-[rgba(255,255,255,0.1)] rounded-sm cursor-pointer">
       <img
         src={picture}
         alt={`${name} profile picture`}

@@ -22,7 +22,7 @@ const SellingProductsTable = () => {
         </thead>
         <tbody>
           {tableData.map((item, index) => (
-            <tr key={index} className="w-full">
+            <tr key={index} className="w-full hover:bg-[rgba(28,28,28,0.05)] dark:hover:bg-[rgba(255,255,255,0.1)] cursor-pointer">
               <th className="w-[36.50%] text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] text-xs leading-[18px] font-normal text-left py-3 transition-colors duration-200">
                 {item.name}
               </th>
