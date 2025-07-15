@@ -1,5 +1,5 @@
-import { useTheme } from "../contexts/ThemeContext";
-import { useSidebar } from "../contexts/SidebarContext";
+import { useSidebar } from "../contexts/SidebarContextUtils";
+import { useTheme } from "../contexts/ThemeContextUtils";
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();

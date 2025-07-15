@@ -1,39 +1,24 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
-
-interface SidebarContextType {
-  isMainSidebarOpen: boolean;
-  isNotificationSidebarOpen: boolean;
-  toggleMainSidebar: () => void;
-  toggleNotificationSidebar: () => void;
-  closeMainSidebar: () => void;
-  closeNotificationSidebar: () => void;
-}
-
-const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
-
-export const useSidebar = () => {
-  const context = useContext(SidebarContext);
-  if (context === undefined) {
-    throw new Error('useSidebar must be used within a SidebarProvider');
-  }
-  return context;
-};
+import React, { useState, useEffect } from "react";
+import type { ReactNode } from "react";
+import { SidebarContext } from "./SidebarContextUtils";
 
 interface SidebarProviderProps {
   children: ReactNode;
 }
 
-export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children }) => {
+export const SidebarProvider: React.FC<SidebarProviderProps> = ({
+  children,
+}) => {
   const [isMainSidebarOpen, setIsMainSidebarOpen] = useState(true);
-  const [isNotificationSidebarOpen, setIsNotificationSidebarOpen] = useState(true);
+  const [isNotificationSidebarOpen, setIsNotificationSidebarOpen] =
+    useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
 
   // Handle responsive behavior for both sidebars
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-      
+
       // Only set initial state, don't override user interactions
       if (!isInitialized) {
         // On mobile screens below 500px, close both sidebars by default
@@ -57,20 +42,20 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children }) =>
     // Set initial state based on screen size
     handleResize();
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isInitialized]);
 
   const toggleMainSidebar = () => {
     // Only allow toggle on mobile screens (below 1025px breakpoint)
     if (window.innerWidth < 1025) {
-      setIsMainSidebarOpen(prev => !prev);
+      setIsMainSidebarOpen((prev) => !prev);
     }
   };
 
   const toggleNotificationSidebar = () => {
     // Allow toggle on all screen sizes
-    setIsNotificationSidebarOpen(prev => !prev);
+    setIsNotificationSidebarOpen((prev) => !prev);
   };
 
   const closeMainSidebar = () => {
@@ -82,17 +67,17 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children }) =>
   };
 
   return (
-    <SidebarContext.Provider 
-      value={{ 
-        isMainSidebarOpen, 
-        isNotificationSidebarOpen, 
-        toggleMainSidebar, 
+    <SidebarContext.Provider
+      value={{
+        isMainSidebarOpen,
+        isNotificationSidebarOpen,
+        toggleMainSidebar,
         toggleNotificationSidebar,
         closeMainSidebar,
-        closeNotificationSidebar
+        closeNotificationSidebar,
       }}
     >
       {children}
     </SidebarContext.Provider>
   );
-}; 
+};

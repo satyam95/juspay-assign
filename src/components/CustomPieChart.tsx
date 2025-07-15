@@ -1,21 +1,34 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import type {
+  NameType,
+  ValueType,
+  Payload,
+} from "recharts/types/component/DefaultTooltipContent";
 
 const data = [
-  { name: "36%", value: 500 },
-  { name: "36%", value: 300 },
-  { name: "36%", value: 200 },
-  { name: "36%", value: 500 },
+  { name: "38.46%", value: 500 },
+  { name: "23.08%", value: 300 },
+  { name: "15.38%", value: 200 },
+  { name: "38.50%", value: 500 },
 ];
 const COLORS = [
   "rgba(28,28,28,1)",
   "rgba(149,164,252,1)",
   "rgba(177,227,255,1)",
   "rgba(186,237,189,1)",
-  ,
 ];
 
-const CustomSectorTooltip = (props: any) => {
-  const { active, payload, coordinate } = props;
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<Payload<ValueType, NameType>>;
+  coordinate?: { x: number; y: number };
+}
+
+const CustomSectorTooltip = ({
+  active,
+  payload,
+  coordinate,
+}: CustomTooltipProps) => {
   if (active && payload && payload.length && coordinate) {
     return (
       <div
@@ -26,7 +39,7 @@ const CustomSectorTooltip = (props: any) => {
           transform: "translate(-50%, -50%)",
           pointerEvents: "none",
           zIndex: 10,
-          backdropFilter: "blur(40px)"
+          backdropFilter: "blur(40px)",
         }}
         className="bg-[rgba(28,28,28,0.8)] py-1 px-2 rounded-lg text-[rgba(255,255,255,1)] text-xs leading-[18px] font-normal"
       >

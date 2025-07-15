@@ -3,7 +3,7 @@ import Checkbox from "../components/Checkbox";
 import StatusBadge from "../components/StatusBadge";
 import { OrdersData } from "../data/OrdersData";
 import Pagination from "../components/Pagination";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../contexts/ThemeContextUtils";
 
 const Orders: React.FC = () => {
   const { theme } = useTheme();

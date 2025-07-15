@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../contexts/ThemeContextUtils";
 
 import StatsCard from "../components/StatsCard";
 import StackBarChart from "../components/StackBarChart";
@@ -62,7 +62,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-7">
-            <div className="flex-1 bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl h-[318px] transition-colors duration-200">
+            <div className="w-full sm:w-[84.03%] bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl h-[318px] transition-colors duration-200">
               <div className="p-6 flex flex-col gap-4 h-[318px] sm:h-full">
                 <div className="flex items-center gap-4">
                   <div className="text-sm leading-5 font-semibold text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
@@ -87,7 +87,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full sm:w-[202px] bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl transition-colors duration-200">
+            <div className="w-full sm:w-[14.03%] sm:min-w-[202px] bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl transition-colors duration-200">
               <div className="p-6 flex flex-col gap-4 h-full">
                 <div className="text-sm leading-5 font-semibold text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
                   Revenue by Location
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-7">
-            <div className="flex-1 bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl transition-colors duration-200">
+            <div className="w-full sm:w-[84.03%] bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl transition-colors duration-200">
               <div className="p-6 flex flex-col gap-1 h-full">
                 <div className="text-sm leading-5 font-semibold text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
                   Top Selling Products
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
                 <SellingProductsTable />
               </div>
             </div>
-            <div className="w-full sm:w-[202px] bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl transition-colors duration-200">
+            <div className="w-full sm:w-[14.03%] sm:min-w-[202px] bg-[rgba(247,249,251,1)] dark:bg-[rgba(255,255,255,0.05)] rounded-2xl transition-colors duration-200">
               <div className="p-6 flex flex-col gap-4 h-full">
                 <div className="text-sm leading-5 font-semibold text-[rgba(28,28,28,1)] dark:text-[rgba(255,255,255,1)] transition-colors duration-200">
                   Total Sales

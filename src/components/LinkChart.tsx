@@ -6,7 +6,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../contexts/ThemeContextUtils";
 
 const data = [
   { name: "Jan", blue: 7, blackSolid: 13, blackDashed: null },

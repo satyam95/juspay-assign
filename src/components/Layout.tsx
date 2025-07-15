@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 import Header from "./Header";
 import MainSidebar from "./MainSidebar";
 import NotificationSidebar from "./NotificationSidebar";
-import { useSidebar } from "../contexts/SidebarContext";
+import { useSidebar } from "../contexts/SidebarContextUtils";
 
 const Layout: React.FC = () => {
   const { isMainSidebarOpen, isNotificationSidebarOpen } = useSidebar();

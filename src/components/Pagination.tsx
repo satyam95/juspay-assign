@@ -1,4 +1,4 @@
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../contexts/ThemeContextUtils";
 
 const Pagination = () => {
   const { theme } = useTheme();
