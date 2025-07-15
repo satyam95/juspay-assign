@@ -24,7 +24,7 @@ interface CustomTooltipProps {
   coordinate?: { x: number; y: number };
 }
 
-const CustomSectorTooltip = ({
+export const CustomSectorTooltip = ({
   active,
   payload,
   coordinate,

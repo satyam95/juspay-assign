@@ -153,4 +153,5 @@ const StackBarChart = () => {
   );
 };
 
+export { CustomXTick, CustomYTick };
 export default StackBarChart;

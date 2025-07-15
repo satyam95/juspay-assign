@@ -17,7 +17,7 @@ const data = [
   { name: "Jun", blue: 25, blackSolid: null, blackDashed: 21 },
 ];
 
-const CustomXTick = ({
+export const CustomXTick = ({
   x,
   y,
   payload,
@@ -42,7 +42,7 @@ const CustomXTick = ({
   </text>
 );
 
-const CustomYTick = ({
+export const CustomYTick = ({
   x,
   y,
   payload,
